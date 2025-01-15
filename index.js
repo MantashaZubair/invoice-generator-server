@@ -15,7 +15,8 @@ require("./config/google-strategy")
 const app= express()
 const PORT= process.env.PORT|| 8002
 const DATABASE_URL = process.env.DATABASE_URL
-
+// Database Connection
+connectDB(DATABASE_URL)
 // Solve cors policy Error
 // const corsOptions={
 //     // set origin to a specific origin
@@ -38,8 +39,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 
-// Database Connection
-connectDB(DATABASE_URL)
+
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
