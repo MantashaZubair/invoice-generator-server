@@ -26,7 +26,7 @@ connectDB(DATABASE_URL)
 // }
 const corsOptions = {
   origin: (origin, callback) => {
-      const allowedOrigins = ["http://localhost:3000", `https://invoice-generator-566n.vercel.app`];
+      const allowedOrigins = ["http://localhost:3000", `https://invoice-generator-nine-sooty.vercel.app`];
       if (!origin || allowedOrigins.includes(origin)) {
           callback(null, true);
       } else {
