@@ -17,12 +17,24 @@ const PORT= process.env.PORT|| 8002
 const DATABASE_URL = process.env.DATABASE_URL
 
 // Solve cors policy Error
-const corsOptions={
-    // set origin to a specific origin
-    origin:process.env.FRONTEND_HOST,
-    credentials:true,
-    optionsSuccessStatus:200,
-}
+// const corsOptions={
+//     // set origin to a specific origin
+//     origin:process.env.FRONTEND_HOST,
+//     credentials:true,
+//     optionsSuccessStatus:200,
+// }
+const corsOptions = {
+  origin: (origin, callback) => {
+      const allowedOrigins = ["http://localhost:3000", `https://invoice-generator-566n.vercel.app`];
+      if (!origin || allowedOrigins.includes(origin)) {
+          callback(null, true);
+      } else {
+          callback(new Error('Not allowed by CORS'));
+      }
+  },
+  optionsSuccessStatus: 200,
+  credentials: true,
+};
 app.use(cors(corsOptions))
 
 
